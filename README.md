@@ -1,5 +1,6 @@
 # ovpn-to-apc.sh
 convert an openvpn-configuration to an Astaro .apc file
+
 The config file needs to contain the ca, cert and key directives that point to the corresponding files.  
 
 ```
