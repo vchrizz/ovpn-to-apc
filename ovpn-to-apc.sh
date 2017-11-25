@@ -122,7 +122,7 @@ get_ta() {
     		takey="${TmpDir}/ta.key"
 		tlsremote=`grep "^tls-remote " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
 		if [ -z "${tlsremote}" ]; then
-    		echo "/CN=OpenVPN_Server\"" > ${takey}
+		echo "/CN=OpenVPN_Server\"" > ${takey}
 		else
     		echo ${tlsremote}\" > ${takey}
 		fi
@@ -153,7 +153,9 @@ get_host_port_proto() {
 			RemProto="udp"
 		else
 			RemHost=`grep "^remote " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
-			RemPort=`grep "^port " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
+			# port is defined in line beginning with: remote
+			#RemPort=`grep "^port " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
+			RemPort=`grep "^remote " ${OvpnFile} | cut -d ' ' -f3 |tr -d '\r\n'`
 			RemProto=`grep "^proto " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
 		fi
 	fi
@@ -397,7 +399,7 @@ echo compression >> ${ApcFile}
 ##
 # Encryption algorithm
 # default: BF-CBC
-###
+### 
 var=`grep "^cipher " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
 if [ -z "${var}" ]; then
     var="BF-CBC"
@@ -497,7 +499,7 @@ varlen=`echo "obase=16; ${varlen}" | bc -q`
 printf "\x${varlen}" >> ${ApcFile}
 echo $var | tr -d '\r\n' >> ${ApcFile}
 printf "\x0e\x00\x00\x00" >> ${ApcFile}
-echo server_address| tr -d '\r\n' >> ${ApcFile}
+echo server_address| tr -d '\r\n' >> ${ApcFile} 
 
 ##
 # Clean up the tmp files we
