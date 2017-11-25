@@ -14,7 +14,7 @@ The config file needs to contain the ca, cert and key directives that point to t
 # Changes:
 # 2017-11-25
 #   Christoph Loesch
-#    * Cloned repository from gitorious.org to github.com
+#    * Cloned repository from https://gitorious.org/admintools/ovpn-to-apc to github.com
 #    * minor corrections and two small fixes
 # 2012-05-28
 #   Stefan Rubner
