@@ -18,7 +18,7 @@ Reference: https://ideas.sophos.com/forums/17359-astaro-gateway-feature-requests
 # Changes:
 # 2017-11-25
 #   Christoph Loesch
-#    * Cloned repository from https://gitorious.org/admintools/ovpn-to-apc to https://github.com/vchrizz/ovpn-to-apc
+#    * Forked repository from https://gitorious.org/admintools/ovpn-to-apc to https://github.com/vchrizz/ovpn-to-apc
 #    * minor corrections and two small fixes
 # 2012-05-28
 #   Stefan Rubner
