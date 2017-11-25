@@ -7,7 +7,7 @@ convert an openvpn-configuration to an Astaro .apc file
 # -----------------------------------------------
 # (C) 2009 Patrick Schneider http://goo.gl/5bPqy
 # (C) 2012 Stefan Rubner    <stefan@whocares.de>
-# (C) 2017 Christoph Loesch       <mail@chil.at>
+# (C) 2017 Christoph Loesch     <http://chil.at>
 # -----------------------------------------------
 # Changes:
 # 2017-11-25
