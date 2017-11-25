@@ -59,7 +59,7 @@ get_ca() {
         ca=`grep "^ca " ${OvpnFile} | awk '{print $2}' |tr -d '\r\n'`
     else
     	ca="${TmpDir}/ca.crt"
-		sed -n "/<ca>/,/<\/ca>/p" ${OvpnFile} | grep -v "ca>" > ${ca} 
+		sed -n "/<ca>/,/<\/ca>/p" ${OvpnFile} | grep -v "ca>" > ${ca}
 	fi
 }
 
@@ -73,7 +73,7 @@ get_key() {
 		key=`grep "^key " ${OvpnFile} | awk '{print $2}' |tr -d '\r\n'`
     else
     	key="${TmpDir}/user.key"
-		sed -n "/<key>/,/<\/key>/p" ${OvpnFile} | grep -v "key>" > ${key} 
+		sed -n "/<key>/,/<\/key>/p" ${OvpnFile} | grep -v "key>" > ${key}
 	fi
 }
 
@@ -87,12 +87,12 @@ get_cert() {
 		cert=`grep "^cert " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
     else
     	cert="${TmpDir}/user.cert"
-		sed -n "/<cert>/,/<\/cert>/p" ${OvpnFile} | grep -v "cert>" > ${cert} 
+		sed -n "/<cert>/,/<\/cert>/p" ${OvpnFile} | grep -v "cert>" > ${cert}
 	fi
 }
 
 ##
-# Get the tls-auth data 
+# Get the tls-auth data
 # from XMLish definition within the
 # .ovpn file
 ##
@@ -177,8 +177,8 @@ if [ $# -lt 2 ] || [ $# -gt 4 ]; then
     echo
     echo username and password are optional and may be entered by the user
     echo The config file needs to contain the ca, cert and key directives
-    echo that point to the corresponding files or it needs to contain the 
-	echo certificates and keys directly enclosed in XML-like tags.
+    echo that point to the corresponding files or it needs to contain the
+    echo certificates and keys directly enclosed in XML-like tags.
     echo
     exit
 fi
@@ -208,7 +208,7 @@ elif [ $# -gt 3 ]; then
     # username and password given
     user=${3}
     pass=${4}
-else 
+else
     # try to get user from the .ovpn file
     user=`echo $1 | cut -d '@' -f1`
     if [ ${user} = ${1} ]; then
@@ -289,7 +289,7 @@ echo protocol >>${ApcFile}
 ##
 # HMAC packet authentication
 # default: SHA1
-## 
+##
 var=`grep "^auth " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
 if [ -z "${var}" ]; then
   var="SHA1"
@@ -311,11 +311,11 @@ hex=`echo "obase=16; ${varlen}" | bc -q` # Length hexadecimal
 num=`echo "obase=16; ${varlen}" | bc -q | tr -d '\r\n' | wc -c` # Length of the hex-number
 odd=`expr ${num} % 2` # hex-number: even or odd?
 # TODO: Add a check for bigger hex-number (more than 4 digits)
-if [ ${odd} -eq 0 ]; then 
+if [ ${odd} -eq 0 ]; then
     # even: swap AABB > BBAA
     varlen1=`echo "obase=16; ${varlen}" | bc -q | cut -b 3,4`
     varlen2=`echo "obase=16; ${varlen}" | bc -q | cut -b 1,2`
-else 
+else
     # odd: swap AAB > AB 0A
     varlen1=`echo "obase=16; ${varlen}" | bc -q | cut -b 2,3`
     varlen2=`echo "obase=16; ${varlen}" | bc -q | cut -b 1`
@@ -397,7 +397,7 @@ echo compression >> ${ApcFile}
 ##
 # Encryption algorithm
 # default: BF-CBC
-### 
+###
 var=`grep "^cipher " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
 if [ -z "${var}" ]; then
     var="BF-CBC"
@@ -434,7 +434,7 @@ echo password >> ${ApcFile}
 if [ ! -z "${isxml}" ]; then
 	# The .ovpn was most likely created by an
 	# OpenVPN Access Server. Thus we somehow
-	# need to get the 'tls-auth stuff' into 
+	# need to get the 'tls-auth stuff' into
 	# our client config
 	get_ta
 	varlen=`cat ${takey} | wc -c`
@@ -452,7 +452,7 @@ else
 			tlsremote="/CN=OpenVPN_Server"
 		fi
 	else
-    	# check whether CN was set without quotes 
+    	# check whether CN was set without quotes
     	temp=`echo ${tlsremote} | grep "^tls-remote "`
     	if [ "${temp}" = "${tlsremote}" ]; then
         	tlsremote=`grep "^tls-remote " ${OvpnFile} | cut -d ' ' -f2 |tr -d '\r\n'`
@@ -497,7 +497,7 @@ varlen=`echo "obase=16; ${varlen}" | bc -q`
 printf "\x${varlen}" >> ${ApcFile}
 echo $var | tr -d '\r\n' >> ${ApcFile}
 printf "\x0e\x00\x00\x00" >> ${ApcFile}
-echo server_address| tr -d '\r\n' >> ${ApcFile} 
+echo server_address| tr -d '\r\n' >> ${ApcFile}
 
 ##
 # Clean up the tmp files we
