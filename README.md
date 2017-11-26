@@ -1,5 +1,11 @@
 # ovpn-to-apc.sh
-convert an openvpn-configuration to an Astaro .apc file
+convert an openvpn-configuration to an Astaro / Sophos .apc file
+
+The config file needs to contain the ca, cert and key directives that point to the corresponding files.  
+
+Reference: https://community.sophos.com/products/unified-threat-management/astaroorg/f/asg-v7-400-beta-closed/67045/feature-request-7-400-way-to-generate-openvpn-apc-file-for-non-astaro-server
+
+Reference: https://ideas.sophos.com/forums/17359-astaro-gateway-feature-requests/suggestions/715890-ssl-vpn-convert-ovpn-to-apc-epc?ref=title
 
 ```
 ##
@@ -7,8 +13,13 @@ convert an openvpn-configuration to an Astaro .apc file
 # -----------------------------------------------
 # (C) 2009 Patrick Schneider http://goo.gl/5bPqy
 # (C) 2012 Stefan Rubner    <stefan@whocares.de>
+# (C) 2017 Christoph Loesch       http://chil.at
 # -----------------------------------------------
 # Changes:
+# 2017-11-25
+#   Christoph Loesch
+#    * Forked repository from https://gitorious.org/admintools/ovpn-to-apc to https://github.com/vchrizz/ovpn-to-apc
+#    * minor corrections and two small fixes
 # 2012-05-28
 #   Stefan Rubner
 #    * Added support for 'tls-auth' in old style
