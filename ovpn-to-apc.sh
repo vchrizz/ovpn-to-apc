@@ -5,8 +5,13 @@
 # -----------------------------------------------
 # (C) 2009 Patrick Schneider http://goo.gl/5bPqy
 # (C) 2012 Stefan Rubner    <stefan@whocares.de>
+# (C) 2017 Christoph Loesch       http://chil.at
 # -----------------------------------------------
 # Changes:
+# 2017-11-25
+#   Christoph Loesch
+#    * Forked repository from https://gitorious.org/admintools/ovpn-to-apc to https://github.com/vchrizz/ovpn-to-apc
+#    * minor corrections and two small fixes
 # 2012-05-28
 #   Stefan Rubner
 #    * Added support for 'tls-auth' in old style
