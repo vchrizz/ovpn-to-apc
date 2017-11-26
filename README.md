@@ -3,10 +3,13 @@ convert an openvpn-configuration to an Astaro / Sophos .apc file
 
 The config file needs to contain the ca, cert and key directives that point to the corresponding files.  
 
-Reference: https://community.sophos.com/products/unified-threat-management/astaroorg/f/asg-v7-400-beta-closed/67045/feature-request-7-400-way-to-generate-openvpn-apc-file-for-non-astaro-server
+References:
 
-Reference: https://ideas.sophos.com/forums/17359-astaro-gateway-feature-requests/suggestions/715890-ssl-vpn-convert-ovpn-to-apc-epc?ref=title
+https://ideas.sophos.com/forums/17359-astaro-gateway-feature-requests/suggestions/715890-ssl-vpn-convert-ovpn-to-apc-epc?ref=title
 
+https://community.sophos.com/products/unified-threat-management/astaroorg/f/asg-v7-400-beta-closed/67045/feature-request-7-400-way-to-generate-openvpn-apc-file-for-non-astaro-server
+
+https://community.sophos.com/products/unified-threat-management/f/german-forum/59048/site-to-site-vpn-mit-ovpn-datei
 ```
 ##
 # ovpn-to-apc.sh
